@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio website</title>
+    <title>Tamizh</title>
     <link rel="stylesheet" href="style.css">
     <!-- boxicon css link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -129,6 +129,155 @@
     background-color: #0366d6; /* GitHub blue on hover */
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==================== Contact section css code ============================ */
+.contactSkills {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.contact-info {
+    width: 100%;
+    background: var(--gradient-white-bg2);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding: 2rem;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.contact-info:hover {
+    transform: translateY(-5px);
+}
+
+.contact-info .main-text {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-info .main-text .heading {
+    color: var(--main-color);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info .main-text span {
+    color: var(--font-color);
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.contact-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
+}
+
+.contact-card .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-color-bg);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.contact-card .content h3 {
+    font-size: 1.2rem;
+    color: var(--main-color);
+    margin-bottom: 0.5rem;
+}
+
+.contact-card .content p {
+    font-size: 1rem;
+    color: var(--font-color);
+    margin: 0;
+    word-break: break-word; /* Ensure long text (like email) wraps properly */
+}
+
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+    .contactSkills {
+        flex-direction: column; /* Stack contact-info and skills vertically */
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .contact-info {
+        padding: 1.5rem;
+    }
+
+    .contact-details {
+        grid-template-columns: 1fr; /* Single column for mobile */
+    }
+
+    .contact-card {
+        flex-direction: column; /* Stack icon and content vertically */
+        text-align: center;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .contact-card .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .contact-card .content h3 {
+        font-size: 1.1rem;
+    }
+
+    .contact-card .content p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info {
+        padding: 1rem;
+    }
+
+    .contact-card {
+        padding: 1rem;
+    }
+
+    .contact-card .content p {
+        font-size: 0.85rem; /* Slightly smaller text for very small screens */
+    }
+}
 
 
 
@@ -541,7 +690,7 @@
                 </div>
             </div>
     
-            <div class="portfolio-box mix branding">
+            <!-- <div class="portfolio-box mix branding">
                 <div class="portfolio-content">
                     <h3>MongoDB</h3>
                     <p>Proficient in handling NoSQL databases with MongoDB, including schema design and data aggregation.</p>
@@ -550,7 +699,7 @@
                 <div class="portfolio-img">
                     <img src="img/skills/mongodb.png" alt="MongoDB">
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
@@ -695,27 +844,8 @@
     
 
 
-    <section class="down-box" id="contact">
+    <section class="down-box" id="">
         <div class="contactSkills">
-            <div class="contact-info">
-                <div class="main-text">
-                    <h2 class="heading">Contact Me</h2>
-                    <span>get in touch with me</span>
-                </div>
-                <form action="#">
-                    <div class="input-box">
-                        <input type="text" placeholder="First Name">
-                        <input type="text" placeholder="Last Name">
-                    </div>
-                    <input type="email" placeholder="Email">
-                    <input type="text" placeholder="Subject">
-                    <textarea name="#" id="" cols="30" rows="10">
-                    </textarea>
-                    <div class="formBtn">
-                        <button type="submit" class="btn">Send Message</button>
-                    </div>
-                </form>
-            </div>
             <div class="skills">
                 <div class="container">
                     <div class="skillBox">
@@ -817,6 +947,42 @@
                     </div>
                 </div>
             </div>
+            <div class="contact-info" id="contact">
+                <div class="main-text">
+                    <h2 class="heading">Contact Me</h2>
+                    <span>Get in touch with me</span>
+                </div>
+                <div class="contact-details">
+                    <div class="contact-card">
+                        <div class="icon">
+                            <i class='bx bxs-phone'></i> <!-- Phone Icon -->
+                        </div>
+                        <div class="content">
+                            <h3>Phone</h3>
+                            <p>+91 7904237706</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon">
+                            <i class='bx bxs-envelope'></i> <!-- Email Icon -->
+                        </div>
+                        <div class="content">
+                            <h3>Email</h3>
+                            <p>tamizharasan2000k@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <div class="icon">
+                            <i class='bx bxs-map'></i> <!-- Address Icon -->
+                        </div>
+                        <div class="content">
+                            <h3>Address</h3>
+                            <p>Tiruvannamalai, Tamil Nadu, India - 606601</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
         </div>
     </section>
 
