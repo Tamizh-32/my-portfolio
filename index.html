@@ -1,1082 +1,1080 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tamizh</title>
+    <title>Tamizharasan | Software Engineer</title>
     <link rel="stylesheet" href="style.css">
-    <!-- boxicon css link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Theme Initializer (prevents flash of dark/light theme) -->
+    <script>
+        (function() {
+            try {
+                if (localStorage.getItem('portfolio-theme') === 'light') {
+                    document.documentElement.classList.add('light-theme');
+                }
+            } catch(e) {}
+        })();
+    </script>
 </head>
-<style>
-    .img-hero img{
-        margin-top: 70px;
-
-    }
-
-    /* Mobile View - Adjusts margin for smaller screens */
-@media (max-width: 768px) {
-    .img-hero img {
-        margin-top: 0px; /* Reduce margin on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .img-hero img {
-        margin-top: 0px; /* Even smaller margin for very small screens */
-    }
-}
-
-
-   
-    @media (max-width: 768px) {
-        .fillter-buttons {
-            display:flex;
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .fillter-buttons {
-            display:flex;
-        }
-    }
-
-
-/* Modal Background */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: center; /* Centers the modal horizontally & vertically */
-    padding: 10px;
-}
-
-/* Modal Content - Centered */
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    width: 50%; /* Default width for larger screens */
-    max-width: 600px; /* Ensures it doesn't get too large */
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    position: relative; /* Keeps it positioned properly */
-}
-
-/* Close Button */
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* 🔵 Responsive for Tablets (Medium Screens) */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 80%; /* Increases width for tablets */
-        max-width: 500px;
-        padding: 15px;
-    }
-}
-
-/* 🔴 Responsive for Mobile Devices */
-@media (max-width: 480px) {
-    .modal-content {
-        width: 95%; /* Almost full width for mobile */
-        max-width: 400px;
-        padding: 15px;
-    }
-
-    .modal-content h2 {
-        font-size: 18px;
-    }
-
-    .modal-content p {
-        font-size: 14px;
-    }
-
-    .close {
-        font-size: 22px;
-        right: 12px;
-    }
-}
-
-
-.github-btn {
-    display: inline-block;
-    background-color: #24292e; /* GitHub dark color */
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 16px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.github-btn:hover {
-    background-color: #0366d6; /* GitHub blue on hover */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* ==================== Contact section css code ============================ */
-.contactSkills {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-    padding: 2rem;
-}
-
-.contact-info {
-    width: 100%;
-    background: var(--gradient-white-bg2);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding: 2rem;
-    border-radius: 15px;
-    transition: transform 0.3s ease;
-}
-
-.contact-info:hover {
-    transform: translateY(-5px);
-}
-
-.contact-info .main-text {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.contact-info .main-text .heading {
-    color: var(--main-color);
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.contact-info .main-text span {
-    color: var(--font-color);
-    font-weight: 300;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
-
-.contact-details {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.contact-card {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 6px 20px;
-}
-
-.contact-card .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    background: var(--gradient-color-bg);
-    border-radius: 50%;
-    color: #fff;
-    font-size: 1.5rem;
-}
-
-.contact-card .content h3 {
-    font-size: 1.2rem;
-    color: var(--main-color);
-    margin-bottom: 0.5rem;
-}
-
-.contact-card .content p {
-    font-size: 1rem;
-    color: var(--font-color);
-    margin: 0;
-    word-break: break-word; /* Ensure long text (like email) wraps properly */
-}
-
-/* Mobile View Adjustments */
-@media (max-width: 768px) {
-    .contactSkills {
-        flex-direction: column; /* Stack contact-info and skills vertically */
-        gap: 1.5rem;
-        padding: 1rem;
-    }
-
-    .contact-info {
-        padding: 1.5rem;
-    }
-
-    .contact-details {
-        grid-template-columns: 1fr; /* Single column for mobile */
-    }
-
-    .contact-card {
-        flex-direction: column; /* Stack icon and content vertically */
-        text-align: center;
-        gap: 1rem;
-        padding: 1.5rem;
-    }
-
-    .contact-card .icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-
-    .contact-card .content h3 {
-        font-size: 1.1rem;
-    }
-
-    .contact-card .content p {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-info {
-        padding: 1rem;
-    }
-
-    .contact-card {
-        padding: 1rem;
-    }
-
-    .contact-card .content p {
-        font-size: 0.85rem; /* Slightly smaller text for very small screens */
-    }
-}
-
-
-
-</style>
 
 <body>
-    <div class="overlay"></div>
-    <header>
-        <a href="#" class="logo"><span>T</span>amizh</a>
-        <ul class="navlist">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Education</a></li>
-            <li><a href="#portfolio">Skills</a></li>
-            <li><a href="#project">Project</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="right-header">
-            <a href="https://wa.me/7904237706" target="_blank" class="btn">
-                Let's Chat <i class='bx bx-message-dots'></i>
-            </a>
-            <div class="menu-icon">
-                <div class="bar"></div>
-            </div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-inner">
+            <span class="loader-text">Tamizh<span class="logo-dot">.</span></span>
+            <div class="loader-bar"></div>
         </div>
-        
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- Navigation -->
+    <header id="navbar">
+        <a href="#home" class="logo">Tamizh<span class="logo-dot">.</span></a>
+        <nav>
+            <ul class="navlist" id="navlist">
+                <li><a href="#home"       class="nav-link active">Home</a></li>
+                <li><a href="#about"      class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills"     class="nav-link">Skills</a></li>
+                <li><a href="#projects"   class="nav-link">Projects</a></li>
+                <li><a href="#contact"    class="nav-link">Contact</a></li>
+                <li class="mobile-resume-item">
+                    <a href="img/resume.pdf" target="_blank" class="btn-resume-mobile">
+                        <i class='bx bx-download'></i> Download Resume
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <!-- Theme Switcher (Dark default, White/Light toggle) -->
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Switch to Light Mode">
+                <i class='bx bx-sun' id='themeIcon'></i>
+            </button>
+            <a href="img/resume.pdf" target="_blank" class="btn-resume">
+                <i class='bx bx-download'></i> Resume
+            </a>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </header>
 
-    <section class="home" id="home">
-        <div class="hero-info">
-            <h3>Welcome To my World</h3>
-            <h2>Hi I'm Tamizharasan</h2>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
-            <div class="text-animate">
-                <h2>FullStack Developer</h2>
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-blob blob1"></div>
+            <div class="hero-blob blob2"></div>
+            <div class="hero-blob blob3"></div>
+            <div class="grid-lines"></div>
+        </div>
+
+        <div class="hero-container">
+            <!-- Left content -->
+            <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Available for work
+                </div>
+
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Tamizharasan</span>
+                </h1>
+
+                <p class="hero-subtitle">Experienced Software Engineer</p>
+
+                <p class="hero-description">
+                    Software Developer with <strong>3+ years of experience</strong> crafting responsive, modern web applications. Specialising in <strong>Angular</strong> and <strong>React</strong> on the frontend with scalable <strong>Node.js</strong> and <strong>Python</strong> REST services on the backend. Proven track record in delivering <strong>high-performance enterprise platforms</strong>, seamless architecture migrations, and data-driven dashboards that transform complex workflows into fast, maintainable, and user-centric software solutions.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-primary">View My Work <i class='bx bx-right-arrow-alt'></i></a>
+                    <a href="mailto:tamizharasan2000k@gmail.com" class="btn-secondary">Hire Me <i class='bx bx-send'></i></a>
+                </div>
+
+                <div class="hero-socials">
+                    <a href="https://github.com/tamizh-32" target="_blank" class="social-link" title="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/tamizharasan-kumar-profile" target="_blank" class="social-link" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://www.instagram.com/tamizh_tom_32/" target="_blank" class="social-link" title="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://wa.me/7904237706" target="_blank" class="social-link" title="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">6+</span>
+                        <span class="stat-label">Enterprise Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                </div>
             </div>
 
-            <p style="font-size: 15px;">Hi, I'm Tamizharasan K , a passionate Full-Stack Developer
-                specializing in MEAN Stack MongoDB, Express.js, Angular, and Node.js.
-                 With 2+ years of experience, I love crafting scalable web 
-                 applications, designing responsive UIs, and building robust backend logic.  
-
-                I hold an MSc in Computer Science, which has strengthened my 
-                problem-solving skills and technical expertise. I am always eager to
-                 learn new technologies and build innovative solutions.</p>
-
-            <div class="btn-box">
-                <a href="mailto:tamizharasan2000k@gmail.com" class="btn">Hire Me Now ! <i class='bx bx-right-arrow-alt' ></i></a>
-                <a href="img/resume.pdf" target="_blank" class="btn d-CV">Download CV <i class='bx bx-download'></i></a>
-            </div>
-
-            <div class="social-media">
-                <div class="bg-icon">
-                    <a href="https://www.instagram.com/tamizh_tom_32/"><i class='bx bxl-instagram'></i></a>
-                    <span></span>
-                </div>
-
-                <div class="bg-icon">
-                    <a href="https://github.com/Tamizh-32"><i class='bx bxl-github'></i></a>
-                    <span></span>
-                </div>
-
-                <div class="bg-icon">
-                    <a href="https://www.linkedin.com/in/tamizharasan-k-975657249/"><i class='bx bxl-linkedin'></i></a>
-
-                    <span></span>
-                </div>
-
-                <div class="bg-icon">
-                    <a href="https://www.facebook.com/profile.php?id=61560848154367"><i class='bx bxl-facebook'></i></a>
-                    <span></span>
+            <!-- Right — profile photo -->
+            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="profile-card">
+                    <div class="profile-glow"></div>
+                    <div class="profile-img-wrapper">
+                        <img src="img/tamizh-profile.jpg" alt="Tamizharasan"
+                             class="profile-img"
+                             onerror="this.src='img/tamizh.jpg'">
+                        <div class="profile-ring ring1"></div>
+                        <div class="profile-ring ring2"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="img-hero">
-            <img style="border-radius: 50%;" src="img/hero.png" alt="hero">
-            <div class="rotate-text">
-                <div class="text">
-              
-                    <p>I'm a Full-Stack Software Developer And  I'm Designer </p>
-               
-                </div>
-                <span><i></i></span>
-            </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll down</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="img/tamizh.jpg" alt="" class="aboutHero">
-            <div class="showcase-ring">
-                <img src="shapes/ring.png" class="ring">
-                <img src="shapes/circle.png" class="circle">
+    <!-- ============================================================
+         ABOUT
+    ============================================================ -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Who I Am</span>
+                <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
             </div>
-        </div>
-        <div class="about-content">
-            <h2 class="heading">About Me</h2>
-            <h3>2 Year's Experience on Software Developement</h3>
-            <p>I have completed an MSc in Computer Science and am a Full Stack Software Developer with 2 years of experience. I specialize in building scalable web applications and APIs, crafting responsive user interfaces, and developing efficient backend logic. Passionate about coding, problem-solving, and continuous learning, I take pride in creating seamless digital experiences.</p>
-            <div class="about-btn">
-                <button class="active">Main Skills</button>
-                <button>Experience</button>
-                <button>Education</button>
-            </div>
-            <div class="content-btn">
-                <div class="content">
-                    <div class="text-box">
-                        <p>Full Stack Software Development</p>
-                        <span>Building scalable and efficient web applications using MEAN Stack.</span>
-                    </div>
-                    <div class="text-box">
-                        <p>Static & Dynamic Website Development</p>
-                        <span>Developing responsive, interactive, and user-friendly websites.</span>
-                    </div>
-                    <div class="text-box">
-                        <p>Database</p>
-                        <span>Experienced in managing and optimizing databases using MySQL and MongoDB.</span>
+
+            <div class="about-grid">
+                <!-- Image column -->
+                <div class="about-img-col" data-aos="fade-right" data-aos-delay="100">
+                    <div class="about-img-frame">
+                        <img src="img/tamizh-profile.jpg" alt="Tamizharasan"
+                             onerror="this.src='img/tamizh.jpg'">
+                        <div class="about-img-accent"></div>
                     </div>
                 </div>
-            
-                <div class="content">
-                    <div class="text-box">
-                        <p>Work Experience - Levicent Software Technologies</p>
-                        <span>Full-Stack Sofware Developer & Team Lead, managing projects and developing Software solutions.</span>
+
+                <!-- Text column -->
+                <div class="about-text-col" data-aos="fade-left" data-aos-delay="200">
+                    <h3>Hello! Nice to meet you.</h3>
+                    <p>
+                        I'm <strong>Tamizharasan</strong>, a <strong>Software Engineer</strong> based in Bengaluru with 3+ years of experience turning complex business ideas into clean, fast, and easy-to-use digital applications.
+                    </p>
+                    <p>
+                        My core strength lies in frontend engineering — crafting seamless user interfaces with <strong>Angular</strong> and <strong>React</strong> — while being equally comfortable building solid, scalable backend APIs with <strong>Node.js</strong> and <strong>Python</strong>.
+                    </p>
+                    <p>
+                        Over the past few years, I’ve had the chance to lead critical system migrations with zero downtime, build real-time monitoring and analytics suites for semiconductor manufacturing, and create full-fledged enterprise products from scratch. I enjoy working closely with cross-functional teams, solving challenging technical puzzles, and delivering software that makes an actual difference.
+                    </p>
+
+                    <div class="about-tabs">
+                        <button class="tab-btn active" data-tab="skills-tab">What I Do Best</button>
+                        <button class="tab-btn" data-tab="exp-tab">Work Experience</button>
+                        <button class="tab-btn" data-tab="edu-tab">Education</button>
                     </div>
-                    <div class="text-box">
-                        <p>Java Full Stack Development - QSpiders</p>
-                        <span>Completed Java Full-Stack Development, Java, Html,CSS,JavaScript and SQL.</span>
-                    </div>
-                    <div class="text-box">
-                        <p>Computer Office Automation - CSS</p>
-                        <span>Certified in office automation, document processing, and data management.</span>
-                    </div>
-                </div>
-            
-                <div class="content">
-                    <div class="text-box">
-                        <p>M.Sc Computer Science - Kalaignar Karunanidhi Government Arts College</p>
-                        <span>Secured 84%.</span>
-                    </div>
-                    <div class="text-box">
-                        <p>B.Sc Computer Science - Shanmuga Industries Arts and Science College</p>
-                        <span>Secured 70%.</span>
-                    </div>
-                    <div class="text-box">
-                        <p>Higher Secondary - VDS Jain Higher Secondary School</p>
-                        <span>Secured 70%.</span>
-                    </div>
-                    <div class="text-box">
-                        <p>SSLC - Shanmuga Industries Government Higher Secondary School</p>
-                        <span>Secured 79%.</span>
-                    </div>
-                </div>
-            </div>
-            
-            
-            
-            <div class="cvContent">
-                <a href="img/resume.pdf" target="_blank" class="btn d-CV">Download CV <i class='bx bx-download'></i></a>
-            </div>
-        </div>
-    </section>
 
-    <section class="services" id="services">
-        <div class="main-text">
-            <h2 class="heading">Education Details</h2>
-            <span>My Academic Background</span>
-        </div>
-    
-        <div class="allServices">
-            <!-- SSLC -->
-            <div class="servicesItem">
-                <div class="icon-services">
-                    <i class='bx bxs-school'></i> <!-- School Icon -->
-                    <span></span>
-                </div>
-                <h3>SSLC</h3>
-                <br>
-                <p>Shanmuga Industries Govt Higher Secondary School</p>
-                <span><strong>Year:</strong> 2015</span> <br>
-                <span><strong>Secured:</strong> 79%</span>
-            </div>
-    
-            <!-- Higher Secondary -->
-            <div class="servicesItem">
-                <div class="icon-services">
-                    <i class='bx bx-book-open'></i> <!-- Open Book Icon -->
-                    <span></span>
-                </div>
-                <h3>Higher Secondary</h3>
-                <br>
-                <p>VDS Jain Higher Secondary School</p>
-              
-                <span><strong>Year:</strong> 2017</span> <br>
-                <span><strong>Secured:</strong> 70%</span>
-            </div>
-    
-            <!-- B.Sc Computer Science -->
-            <div class="servicesItem">
-                <div class="icon-services">
-                    <i class='bx bx-book-reader'></i> <!-- Reading Book Icon -->
-                    <span></span>
-                </div>
-                <h3>B.Sc Computer Science</h3>
-                <p>Shanmuga Industries Arts and Science College</p>
-                <span><strong>Year:</strong> 2017 - 2020</span> <br>
-                <span><strong>Secured:</strong> 70%</span>
-            </div>
-    
-            <!-- M.Sc Computer Science -->
-            <div class="servicesItem">
-                <div class="icon-services">
-                    <i class='bx bxs-graduation'></i> <!-- Graduation Cap Icon -->
-                    <span></span>
-                </div>
-                <h3>M.Sc Computer Science</h3>
-                <p>Kalaignar Karunanidhi Government Arts College</p>
-                <span><strong>Year:</strong> 2020 - 2022</span> <br>
-                <span><strong>Secured:</strong> 84%</span>
-            </div>
-        </div>
-    
-        <div class="showcase">
-            <img src="shapes/ring.png" class="ring">
-            <img src="shapes/circle.png" class="circle">
-            <img src="shapes/circle.png" class="circle2">
-            <img src="shapes/circle.png" class="circle3">
-            <img src="shapes/half-ring.png" class="half-ring">
-        </div>
-    </section>
-
-
-
-    <!-- Extra Skills Section -->
-<!-- <section class="extra-skills" id="extra-skills">
-    <div class="main-text">
-        <h2 class="heading">Extra Skills</h2>
-        <span>Additional Certifications and Achievements</span>
-    </div>
-
-    <div class="allSkills">
-    
-        <div class="skillItem">
- 
-            <h3>Typewriting English Junior</h3>
-            <p>First Class with Distinction</p>
-            <span><strong>Year: </strong> February 2016</span> <br>
-            <span><strong>Percentage:</strong> 85%</span> <br>
-            <span><strong>Certificate Serial No:</strong> 0230262</span>
-        </div>
-
-  
-        <div class="skillItem">
-
-            <h3>Typewriting English Senior</h3>
-            <p>First Class</p>
-            <span><strong>Year:</strong> August 2016</span> <br>
-            <span><strong>Percentage:</strong> 75%</span> <br>
-            <span><strong>Certificate Serial No:</strong> 0124575</span>
-        </div>
-
-        <div class="skillItem">
-
-            <h3>Typewriting Tamil Junior</h3>
-            <p>First Class with Distinction</p>
-            <span><strong>Year:</strong>February 2018</span> <br>
-            <span><strong>Percentage:</strong> 90%</span> <br>
-            <span><strong>Certificate Serial No:</strong> 0384910</span>
-        </div>
-
-        <div class="skillItem">
-            <h3>Typewriting Tamil Senior</h3>
-            <p>First Class with Distinction</p>
-            <span><strong>Year:</strong> 2019</span> <br>
-            <span><strong>Percentage:</strong> 88%</span> <br>
-            <span><strong>Certificate Serial No:</strong> 0286915</span>
-        </div>
-
-
-        <div class="skillItem">
-
-            <h3>Diploma in Computer Application</h3>
-            <p>First Class</p>
-            <span><strong>Year:</strong>April 2022</span> <br>
-            <span><strong>Percentage:</strong> 80%</span> <br>
-            <span><strong>Certificate Serial No:</strong> 0065844</span>
-        </div>
-
-        <div class="skillItem">
-
-            <h3>Tally ERP 9</h3>
-            <p>First Class</p>
-            <span><strong>Year:</strong>November 2018</span> <br>
-            <span><strong>Percentage:</strong> 78%</span> <br>
-            <span><strong>Certificate Serial No:</strong> 10071</span>
-        </div>
-        
-    </div>
-
-    <div class="showcase">
-        <img src="shapes/ring.png" class="ring">
-        <img src="shapes/circle.png" class="circle">
-        <img src="shapes/circle.png" class="circle2">
-        <img src="shapes/circle.png" class="circle3">
-        <img src="shapes/half-ring.png" class="half-ring">
-    </div>
-</section> -->
-    
-    
-
-    <section class="portfolio" id="portfolio">
-        <div class="main-text">
-            <h2 class="heading">My Skills</h2>
-            <span>What I Will Do for You</span>
-        </div>
-        <div   class="fillter-buttons">
-            <button class="button mixitup-control-active" data-filter="all">All </button>
-            <button class="button" data-filter=".web">Front End</button>
-            <button class="button" data-filter=".uiux">Back End</button>
-            <button class="button" data-filter=".branding">Database</button>
-        </div>
-    
-        <div class="portfolio-gallery">
-            <div class="portfolio-box mix uiux">
-                <div class="portfolio-content">
-                    <h3>Node.js</h3>
-                    <p>Experience in building scalable and efficient server-side applications using Node.js and Express.js.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/nodejs_logo.png" alt="Node.js">
-                </div>
-            </div>
-    
-            <div class="portfolio-box mix uiux">
-                <div class="portfolio-content">
-                    <h3>Java</h3>
-                    <p>Proficient in Java programming for backend development, object-oriented design, and Spring Boot framework.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/java.png" alt="Java">
-                </div>
-            </div>
-    
-            <div class="portfolio-box mix uiux">
-                <div class="portfolio-content">
-                    <h3>PHP</h3>
-                    <p>Experienced in developing dynamic web applications with PHP and frameworks like Laravel and CodeIgniter.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/php.png" alt="PHP">
-                </div>
-            </div>
-    
-            <div class="portfolio-box mix web">
-                <div class="portfolio-content">
-                    <h3>HTML</h3>
-                    <p>Strong knowledge of HTML5 for structuring modern, semantic, and accessible web pages.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/html.png" alt="HTML">
-                </div>
-            </div>
-    
-            <div class="portfolio-box mix web">
-                <div class="portfolio-content">
-                    <h3>CSS</h3>
-                    <p>Expertise in writing responsive and visually appealing styles using CSS3, Flexbox, and Grid.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/css.png" alt="CSS">
-                </div>
-            </div>
-    
-            <div class="portfolio-box mix web">
-                <div class="portfolio-content">
-                    <h3>Bootstrap</h3>
-                    <p>Skilled in using Bootstrap for creating responsive and mobile-first web designs with pre-built components.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/bootstrap.png" alt="Bootstrap">
-                </div>
-            </div>
-
-            <div class="portfolio-box mix web">
-                <div class="portfolio-content">
-                    <h3>Angular</h3>
-                    <p>Proficient in building dynamic, single-page applications (SPAs) using Angular. Experience with components, services, RxJS, and state management for scalable frontend development.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/angular.png" alt="Angular">
-                </div>
-            </div>
-            
-    
-            <div class="portfolio-box mix branding">
-                <div class="portfolio-content">
-                    <h3>MySQL</h3>
-                    <p>Experience in database design, writing efficient SQL queries, and managing relational data with MySQL.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/mysql.png" alt="MySQL">
-                </div>
-            </div>
-    
-            <div class="portfolio-box mix branding">
-                <div class="portfolio-content">
-                    <h3>MongoDB</h3>
-                    <p>Proficient in handling NoSQL databases with MongoDB, including schema design and data aggregation.</p>
-                    <a href="#" class="readMore">Explore More</a>
-                </div>
-                <div class="portfolio-img">
-                    <img src="img/skills/mongodb.png" alt="MongoDB">
-                </div>
-            </div>
-
-
-        </div>
-    </section>
-    
-
-    <section class="projects" id="project">
-        <div class="main-text">
-            <h2 class="heading">Projects</h2>
-            <span>My Recent Work</span>
-        </div>
-    
-        <div class="project-box swiper mySwiper">
-            <div class="cards swiper-wrapper">
-                <!-- Restaurant Management System -->
-                <div class="card swiper-slide">
-                    <div class="card-top">
-                        <img style="height:150px" src="img/projects/Restaurant-Software.jpg" alt="Restaurant Management System">
-                    </div>
-                    <div class="card-info">
-                        <h2>Restaurant Management System</h2>
-                        <span class="date">Personal Project | Jan 1, 2023 - June 1, 2023</span>
-                        <p class="excerpt">
-                            A Node.js-based system for managing restaurant operations efficiently.
-                        </p>
-                        <button class="readMore" onclick="openModal('restaurant')">Explore More</button>
-                    </div>
-                </div>
-    
-                <!-- E-Commerce Website -->
-                <div class="card swiper-slide">
-                    <div class="card-top">
-                        <img src="img/projects/E-Commerce.jpg" alt="E-Commerce Website">
-                    </div>
-                    <div class="card-info">
-                        <h2>E-Commerce Website & Admin Panel</h2>
-                        <span class="date">Personal Project | March 1, 2023 - Sept 1, 2023</span>
-                        <p class="excerpt">
-                            A full-featured online shopping platform with secure payment integration.
-                        </p>
-                        <button class="readMore" onclick="openModal('ecommerce')">Explore More</button>
-                    </div>
-                </div>
-    
-                <!-- Hotel Management System -->
-                <div class="card swiper-slide">
-                    <div class="card-top">
-                        <img src="img/projects/hotel.jpg" alt="Hotel Management System">
-                    </div>
-                    <div class="card-info">
-                        <h2>Hotel Management System And With Booking Engine</h2>
-                        <span class="date">Levicent Software Technologies | Ongoing</span>
-                        <p class="excerpt">
-                            A cloud-based hotel management system with booking and billing automation.
-                        </p>
-                        <button class="readMore" onclick="openModal('hotel')">Explore More</button>
-                    </div>
-                </div>
-    
-                <!-- Human Resource Management System -->
-                <div class="card swiper-slide">
-                    <div class="card-top">
-                        <img  style="height:150px" src="img/projects/hr.jpg" alt="Human Resource Management System">
-                    </div>
-                    <div class="card-info">
-                        <h2>Human Resource Management System</h2>
-                        <span class="date">Levicent Software Technologies | Ongoing</span>
-                        <p class="excerpt">
-                            A complete HR solution for employee tracking, payroll, and performance management.
-                        </p>
-                        <button class="readMore" onclick="openModal('hrms')">Explore More</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="swiper-pagination"></div>
-    </section>
-    
-    <!-- Popup Modals -->
-   <!-- Popup Modals -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modal-title"></h2>
-        <p id="modal-description"></p>
-        <p><strong>Technologies Used:</strong> <span id="modal-tech"></span></p>
-        <p><strong>Features:</strong> <span id="modal-features"></span></p>
-        <p><strong>Project Duration:</strong> <span id="modal-duration"></span></p>
-        <a id="modal-github" href="#" target="_blank" class="github-btn">🔗 View on GitHub</a>
-    </div>
-</div>
-
-
-
-<!-- Add this section after the Projects section -->
-<section class="hobbies" id="hobbies">
-    <div class="main-text">
-        <h2 class="heading">Hobbies</h2>
-        <span>What I Love to Do</span>
-    </div>
-
-    <div class="hobbies-container">
-        <!-- Cricket -->
-        <div class="hobby-item">
-            <div class="icon">
-                <i class='bx bxs-cricket-ball'></i> <!-- Cricket Icon -->
-            </div>
-            <h3>Playing Cricket</h3>
-            <p>I enjoy playing cricket as it keeps me active and helps me build teamwork and strategy skills.</p>
-        </div>
-
-        <!-- Listening to Music -->
-        <div class="hobby-item">
-            <div class="icon">
-                <i class='bx bxs-music'></i> <!-- Music Icon -->
-            </div>
-            <h3>Listening to Music</h3>
-            <p>Music is my escape. I love listening to various genres, especially when I need to relax or focus.</p>
-        </div>
-
-        <!-- Playing Chess -->
-        <div class="hobby-item">
-            <div class="icon">
-                <i class='bx bxs-chess'></i> <!-- Chess Icon -->
-            </div>
-            <h3>Playing Chess</h3>
-            <p>Chess is my favorite mental exercise. It helps me improve my problem-solving and strategic thinking.</p>
-        </div>
-
-        <!-- Playing Carrom -->
-        <div class="hobby-item">
-            <div class="icon">
-                <i class='bx bxs-circle'></i> <!-- Carrom Icon -->
-            </div>
-            <h3>Playing Carrom</h3>
-            <p>Carrom is a fun and engaging game that I enjoy playing with friends and family during leisure time.</p>
-        </div>
-    </div>
-</section>
-    
-    
-
-
-    <section class="down-box" id="">
-        <div class="contactSkills">
-            <div class="skills">
-                <div class="container">
-                    <div class="skillBox">
-                        <div class="main-text">
-                            <h2 class="heading">My Skills</h2>
-                            <span>Let Me Help you</span>
-                        </div>
-                        <div class="skill-wrap">
-                            <div class="skill">
-                                <div class="outer-circle">
-                                    <div class="inner-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="180px" height="180px">
-                                            <defs>
-                                                <linearGradient id="GradientColor">
-                                                <stop offset="0%" stop-color="#e91e63" />
-                                                <stop offset="100%" stop-color="#673ab7" />
-                                                </linearGradient>
-                                            </defs>
-                                                <circle cx="85" cy="85" r="75" stroke-linecap="round" />
-                                       </svg>
-                                       <h2 class="counter">
-                                        <span data-target="95">0</span>%
-                                       </h2>
-                                    </div>
-                                </div>
-                                <div class="sk-title">
-                                    HTML
+                    <div class="tab-content active" id="skills-tab">
+                        <div class="tab-items">
+                            <div class="tab-item">
+                                <i class='bx bx-check-circle'></i>
+                                <div>
+                                    <strong>Frontend &amp; User Experience:</strong> Building modern, responsive, and intuitive web interfaces with clean architecture and seamless performance across all devices.
                                 </div>
                             </div>
-
-                            <div class="skill">
-                                <div class="outer-circle">
-                                    <div class="inner-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="180px" height="180px">
-                                            <defs>
-                                                <linearGradient id="GradientColor">
-                                                <stop offset="0%" stop-color="#e91e63" />
-                                                <stop offset="100%" stop-color="#673ab7" />
-                                                </linearGradient>
-                                            </defs>
-                                                <circle cx="85" cy="85" r="75" stroke-linecap="round" />
-                                       </svg>
-                                       <h2 class="counter">
-                                        <span data-target="90">0</span>%
-                                       </h2>
-                                    </div>
-                                </div>
-                                <div class="sk-title">
-                                   Nodejs
-                                </div>
-                            </div>
-
-
-                            <div class="skill">
-                                <div class="outer-circle">
-                                    <div class="inner-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="180px" height="180px">
-                                            <defs>
-                                                <linearGradient id="GradientColor">
-                                                <stop offset="0%" stop-color="#e91e63" />
-                                                <stop offset="100%" stop-color="#673ab7" />
-                                                </linearGradient>
-                                            </defs>
-                                                <circle cx="85" cy="85" r="75" stroke-linecap="round" />
-                                       </svg>
-                                       <h2 class="counter">
-                                        <span data-target="85">0</span>%
-                                       </h2>
-                                    </div>
-                                </div>
-                                <div class="sk-title">
-                                    Angular
-                                </div>
-                            </div>
-
-
-                            <div class="skill">
-                                <div class="outer-circle">
-                                    <div class="inner-circle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="180px" height="180px">
-                                            <defs>
-                                                <linearGradient id="GradientColor">
-                                                <stop offset="0%" stop-color="#e91e63" />
-                                                <stop offset="100%" stop-color="#673ab7" />
-                                                </linearGradient>
-                                            </defs>
-                                                <circle cx="85" cy="85" r="75" stroke-linecap="round" />
-                                       </svg>
-                                       <h2 class="counter">
-                                        <span data-target="80">0</span>%
-                                       </h2>
-                                    </div>
-                                </div>
-                                <div class="sk-title">
-                                    MongoDB
+                            <div class="tab-item">
+                                <i class='bx bx-check-circle'></i>
+                                <div>
+                                    <strong>Backend &amp; End-to-End Solutions:</strong> Designing robust REST APIs, secure authentication, scalable databases, and delivering complete software solutions from idea to production.
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="tab-content" id="exp-tab">
+                        <div class="tab-items">
+                            <div class="tab-item">
+                                <i class='bx bx-buildings'></i>
+                                <div>
+                                    <strong>Renascent Business Solution</strong> — Software Engineer (Oct 2025 – Present)<br>
+                                    <small style="color:var(--text-muted)">Client: Rayvector Technologies / Lam Research</small>
+                                </div>
+                            </div>
+                            <div class="tab-item">
+                                <i class='bx bx-buildings'></i>
+                                <div>
+                                    <strong>Levicent Software Technologies Pvt. Ltd.</strong> — Software Developer (May 2023 – Sep 2025)<br>
+                                    <small style="color:var(--text-muted)">Built enterprise hospitality and management systems</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="edu-tab">
+                        <div class="tab-items">
+                            <div class="tab-item">
+                                <i class='bx bxs-graduation'></i>
+                                <div>
+                                    <strong>M.Sc Computer Science</strong> — CGPA 8.4<br>
+                                    <small style="color:var(--text-muted)">Kalaignar Karunanidhi Govt Arts College, Tiruvannamalai (2020 – 2022)</small>
+                                </div>
+                            </div>
+                            <div class="tab-item">
+                                <i class='bx bx-book-reader'></i>
+                                <div>
+                                    <strong>B.Sc Computer Science</strong> — CGPA 7.1<br>
+                                    <small style="color:var(--text-muted)">Shanmuga Industries Arts & Science College, Tiruvannamalai (2017 – 2020)</small>
+                                </div>
+                            </div>
+                            <div class="tab-item">
+                                <i class='bx bx-code-block'></i>
+                                <div>
+                                    <strong>Java Full Stack Development</strong> — Certification<br>
+                                    <small style="color:var(--text-muted)">Q Spiders, Chennai (2022 – 2023)</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="img/resume.pdf" target="_blank" class="btn-primary mt-20">
+                        <i class='bx bx-download'></i> Download Resume
+                    </a>
                 </div>
             </div>
-            <div class="contact-info" id="contact">
-                <div class="main-text">
-                    <h2 class="heading">Contact Me</h2>
-                    <span>Get in touch with me</span>
-                </div>
-                <div class="contact-details">
-                    <div class="contact-card">
-                        <div class="icon">
-                            <i class='bx bxs-phone'></i> <!-- Phone Icon -->
-                        </div>
-                        <div class="content">
-                            <h3>Phone</h3>
-                            <p>+91 7904237706</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="icon">
-                            <i class='bx bxs-envelope'></i> <!-- Email Icon -->
-                        </div>
-                        <div class="content">
-                            <h3>Email</h3>
-                            <p>tamizharasan2000k@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="icon">
-                            <i class='bx bxs-map'></i> <!-- Address Icon -->
-                        </div>
-                        <div class="content">
-                            <h3>Address</h3>
-                            <p>Tiruvannamalai, Tamil Nadu, India - 606601</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
         </div>
     </section>
 
-    <footer>
-        <p>Copyright © 2024 by <span>Tamizh Coder</span> || All Right Reservd.</p>
+    <!-- ============================================================
+         EXPERIENCE
+    ============================================================ -->
+    <section class="experience-section" id="experience">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">My Journey</span>
+                <h2 class="section-title">Work <span class="gradient-text">Experience</span></h2>
+            </div>
+
+            <div class="timeline">
+
+                <!-- Job 1: Renascent -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-dot current"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Software Engineer</h3>
+                                <h4>Renascent Business Solution &nbsp;·&nbsp; Client: Rayvector Technologies / Lam Research</h4>
+                            </div>
+                            <span class="timeline-date current-badge">Oct 2025 – Present</span>
+                        </div>
+                        <div class="timeline-tech">
+                            <span>Angular</span><span>React</span><span>TypeScript</span><span>Node.js</span>
+                            <span>Python</span><span>PostgreSQL</span><span>MSAL</span><span>OAuth 2.0</span><span>Docker</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Own the frontend of enterprise products for Rayvector and its client Lam Research, taking features from requirements and UI design through development, release and maintenance.</li>
+                            <li>Led the Angular and Node.js upgrades and the move to modern authentication (MSAL v1→v3) across two business-critical applications, with zero production downtime.</li>
+                            <li>Build analytics and monitoring dashboards turning large semiconductor datasets (wafer, device, project data) into clear views for engineers, managers and leadership.</li>
+                            <li>Develop and document REST APIs with role-based access control, JWT/OAuth 2.0 authentication, Swagger/OpenAPI specs, and design the PostgreSQL schemas behind them.</li>
+                            <li>Work with backend and data teams on API contracts, code reviews and sprint delivery to committed timelines.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 2: Levicent -->
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div>
+                                <h3>Software Developer</h3>
+                                <h4>Levicent Software Technologies Pvt. Ltd.</h4>
+                            </div>
+                            <span class="timeline-date">May 2023 – Sep 2025</span>
+                        </div>
+                        <div class="timeline-tech">
+                            <span>Angular</span><span>Node.js</span><span>Express</span>
+                            <span>MySQL</span><span>MongoDB</span><span>REST APIs</span><span>Bootstrap</span>
+                        </div>
+                        <ul class="timeline-points">
+                            <li>Built and maintained Angular applications for hospitality clients — reservations, housekeeping, inventory and restaurant operations.</li>
+                            <li>Developed the Node.js/Express REST APIs behind these modules, modelling data in MySQL and MongoDB to match each module's access patterns.</li>
+                            <li>Created a library of reusable Angular components (data tables, form controls, dialogs, validators) that shortened development of new modules and kept the UI consistent.</li>
+                            <li>Designed screens in Canva and implemented them as responsive, cross-browser interfaces for front-desk, housekeeping and kitchen staff on desktop and tablet.</li>
+                            <li>Fixed production issues, reviewed teammates' code and worked within Agile sprints across the full project lifecycle.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SKILLS (100% Vector/Boxicons, No Broken Images)
+    ============================================================ -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">What I Know</span>
+                <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+            </div>
+
+            <div class="skills-categories" data-aos="fade-up" data-aos-delay="100">
+                <button class="skill-cat-btn active" data-cat="all">All</button>
+                <button class="skill-cat-btn" data-cat="frontend">Frontend</button>
+                <button class="skill-cat-btn" data-cat="backend">Backend</button>
+                <button class="skill-cat-btn" data-cat="database">Database</button>
+                <button class="skill-cat-btn" data-cat="tools">Tools</button>
+            </div>
+
+            <div class="skills-grid">
+
+                <!-- ===== FRONTEND ===== -->
+                <div class="skill-card" data-cat="frontend" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="skill-icon icon-angular"><i class='bx bxl-angular'></i></div>
+                    <h4>Angular</h4>
+                    <p>Components, RxJS, Material UI, Lazy Loading, Reactive Forms</p>
+                </div>
+
+                <div class="skill-card" data-cat="frontend" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="skill-icon icon-react"><i class='bx bxl-react'></i></div>
+                    <h4>React.js / Vite</h4>
+                    <p>Hooks, State Management, Vite, Recharts, Data Visualisation</p>
+                </div>
+
+                <div class="skill-card" data-cat="frontend" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="skill-icon icon-ts"><i class='bx bxl-typescript'></i></div>
+                    <h4>TypeScript</h4>
+                    <p>ES6+, Type Safety, Decorators, Interfaces, Generics</p>
+                </div>
+
+                <div class="skill-card" data-cat="frontend" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="skill-icon icon-js"><i class='bx bxl-javascript'></i></div>
+                    <h4>JavaScript (ES6+)</h4>
+                    <p>Async/Await, DOM, Event-driven architecture, Modern ESNext</p>
+                </div>
+
+                <div class="skill-card" data-cat="frontend" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="skill-icon icon-html"><i class='bx bxl-html5'></i></div>
+                    <h4>HTML5 &amp; CSS3</h4>
+                    <p>Semantic HTML, Flexbox, CSS Grid, Responsive Design, A11y</p>
+                </div>
+
+                <div class="skill-card" data-cat="frontend" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="skill-icon icon-tailwind"><i class='bx bxl-tailwind-css'></i></div>
+                    <h4>Tailwind CSS</h4>
+                    <p>Utility-first styling, Custom theme configs, Responsive grids</p>
+                </div>
+
+                <div class="skill-card" data-cat="frontend" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="skill-icon icon-bootstrap"><i class='bx bxl-bootstrap'></i></div>
+                    <h4>Bootstrap &amp; Material UI</h4>
+                    <p>Design systems, Responsive components, Clean interfaces</p>
+                </div>
+
+                <!-- ===== BACKEND ===== -->
+                <div class="skill-card" data-cat="backend" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="skill-icon icon-node"><i class='bx bxl-nodejs'></i></div>
+                    <h4>Node.js / Express</h4>
+                    <p>RESTful APIs, MVC architecture, Middlewares, Event loop</p>
+                </div>
+
+                <div class="skill-card" data-cat="backend" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="skill-icon icon-python"><i class='bx bxl-python'></i></div>
+                    <h4>Python</h4>
+                    <p>REST Services, Automation, Scripting, Device telemetry</p>
+                </div>
+
+                <div class="skill-card" data-cat="backend" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="skill-icon icon-auth"><i class='bx bx-shield-quarter'></i></div>
+                    <h4>OAuth 2.0 / JWT / MSAL</h4>
+                    <p>Token handling, MSAL v1→v3, Role-based auth, Session mgmt</p>
+                </div>
+
+                <div class="skill-card" data-cat="backend" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="skill-icon icon-cpp"><i class='bx bx-code-alt'></i></div>
+                    <h4>C++ (Crow)</h4>
+                    <p>High-performance Crow REST microservices &amp; Parquet data</p>
+                </div>
+
+                <!-- ===== DATABASE ===== -->
+                <div class="skill-card" data-cat="database" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="skill-icon icon-postgres"><i class='bx bxl-postgresql'></i></div>
+                    <h4>PostgreSQL</h4>
+                    <p>Relational Schemas, Parquet file storage, Query tuning</p>
+                </div>
+
+                <div class="skill-card" data-cat="database" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="skill-icon icon-mysql"><i class='bx bx-data'></i></div>
+                    <h4>MySQL</h4>
+                    <p>Normalized databases, Transactional queries, Indexing</p>
+                </div>
+
+                <div class="skill-card" data-cat="database" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="skill-icon icon-mongo"><i class='bx bxl-mongodb'></i></div>
+                    <h4>MongoDB</h4>
+                    <p>Document models, Aggregation pipelines, Mongoose schemas</p>
+                </div>
+
+                <!-- ===== TOOLS ===== -->
+                <div class="skill-card" data-cat="tools" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="skill-icon icon-git"><i class='bx bxl-git'></i></div>
+                    <h4>Git &amp; GitHub</h4>
+                    <p>Branching strategies, Pull requests, Merge conflict resolution</p>
+                </div>
+
+                <div class="skill-card" data-cat="tools" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="skill-icon icon-docker"><i class='bx bxl-docker'></i></div>
+                    <h4>Docker</h4>
+                    <p>Containerising microservices, Environments, Agent deployment</p>
+                </div>
+
+                <div class="skill-card" data-cat="tools" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="skill-icon icon-postman"><i class='bx bx-terminal'></i></div>
+                    <h4>Postman &amp; Swagger</h4>
+                    <p>API contract validation, OpenAPI documentation, Mock tests</p>
+                </div>
+
+                <div class="skill-card" data-cat="tools" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="skill-icon icon-jira"><i class='bx bx-task'></i></div>
+                    <h4>Agile / Jira</h4>
+                    <p>Scrum sprints, Code reviews, SDLC, Performance optimization</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         EDUCATION (Centered on Desktop)
+    ============================================================ -->
+    <section class="education-section" id="education">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Academic Background</span>
+                <h2 class="section-title">My <span class="gradient-text">Education</span></h2>
+            </div>
+            <div class="edu-grid">
+                <div class="edu-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="edu-icon"><i class='bx bxs-graduation'></i></div>
+                    <div class="edu-year">2020 – 2022</div>
+                    <h3>M.Sc Computer Science</h3>
+                    <h4>Kalaignar Karunanidhi Government Arts College, Tiruvannamalai</h4>
+                    <span class="edu-grade">CGPA 8.4</span>
+                </div>
+                <div class="edu-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="edu-icon"><i class='bx bx-book-reader'></i></div>
+                    <div class="edu-year">2017 – 2020</div>
+                    <h3>B.Sc Computer Science</h3>
+                    <h4>Shanmuga Industries Arts &amp; Science College, Tiruvannamalai</h4>
+                    <span class="edu-grade">CGPA 7.1</span>
+                </div>
+                <div class="edu-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="edu-icon"><i class='bx bx-code-alt'></i></div>
+                    <div class="edu-year">2022 – 2023</div>
+                    <h3>Java Full Stack Development</h3>
+                    <h4>Q Spiders, Chennai</h4>
+                    <span class="edu-grade">Certified</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PROJECTS (Modern Interactive Visual Cards)
+    ============================================================ -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">What I've Built</span>
+                <h2 class="section-title">My <span class="gradient-text">Projects</span></h2>
+            </div>
+
+            <div class="projects-filter" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="rayvector">Rayvector</button>
+                <button class="filter-btn" data-filter="levicent">Levicent</button>
+                <button class="filter-btn" data-filter="angular">Angular</button>
+                <button class="filter-btn" data-filter="react">React / Vite</button>
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- 1. Enterprise Migration -->
+                <div class="project-card" data-category="rayvector angular" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-visual banner-migration">
+                        <div class="pv-icon"><i class='bx bx-sync'></i></div>
+                        <div class="pv-badge">Zero Downtime</div>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span>Angular 22</span><span>Node 24</span><span>TypeScript</span><span>MSAL v3</span>
+                        </div>
+                        <h3>Enterprise App Migration &amp; Auth Upgrade</h3>
+                        <p>Modernized two business-critical enterprise applications from Angular 12→22 and Node 16→24 with zero downtime. Transitioned auth to MSAL v3.</p>
+                        <div class="project-links">
+                            <button class="btn-project-detail" onclick="openProjectModal('migration')">
+                                <i class='bx bx-info-circle'></i> Details
+                            </button>
+                            <span class="project-client-tag"><i class='bx bx-buildings'></i> Lam Research (Rayvector)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Semiconductor Analytics -->
+                <div class="project-card" data-category="rayvector angular" data-aos="fade-up" data-aos-delay="150">
+                    <div class="project-visual banner-semiconductor">
+                        <div class="pv-icon"><i class='bx bx-chip'></i></div>
+                        <div class="pv-badge">Wafer &amp; Defect AI</div>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span>Angular</span><span>C++ Crow</span><span>PostgreSQL</span><span>Parquet</span>
+                        </div>
+                        <h3>Semiconductor Analytics Suite</h3>
+                        <p>Unified architecture powering 4 applications for wafer defect detection, offset tracking, and equipment health visualization.</p>
+                        <div class="project-links">
+                            <button class="btn-project-detail" onclick="openProjectModal('semiconductor')">
+                                <i class='bx bx-info-circle'></i> Details
+                            </button>
+                            <span class="project-client-tag"><i class='bx bx-buildings'></i> Lam Research (Rayvector)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. AI Project Health Platform -->
+                <div class="project-card" data-category="rayvector react" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-visual banner-ai">
+                        <div class="pv-icon"><i class='bx bx-brain'></i></div>
+                        <div class="pv-badge">AI Intelligence</div>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span>Vite</span><span>Tailwind CSS</span><span>Recharts</span><span>REST APIs</span>
+                        </div>
+                        <h3>AI Project Health &amp; Status Platform</h3>
+                        <p>Aggregates Gitea, Zoho Projects, Raylumina, and MS Teams data into AI-generated risk, blocker dashboards with a chat interface.</p>
+                        <div class="project-links">
+                            <button class="btn-project-detail" onclick="openProjectModal('aiplatform')">
+                                <i class='bx bx-info-circle'></i> Details
+                            </button>
+                            <span class="project-client-tag"><i class='bx bx-buildings'></i> Rayvector Product</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. IT Monitoring Platform -->
+                <div class="project-card" data-category="rayvector react" data-aos="fade-up" data-aos-delay="250">
+                    <div class="project-visual banner-monitor">
+                        <div class="pv-icon"><i class='bx bx-tachometer'></i></div>
+                        <div class="pv-badge">Telemetry &amp; Docker</div>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span>Vite</span><span>Docker</span><span>Python</span><span>REST APIs</span>
+                        </div>
+                        <h3>IT Management &amp; Monitoring Platform</h3>
+                        <p>Agent-based fleet telemetry monitoring CPU, disk, and temperatures across company devices with bandwidth and app restrictions.</p>
+                        <div class="project-links">
+                            <button class="btn-project-detail" onclick="openProjectModal('itmonitor')">
+                                <i class='bx bx-info-circle'></i> Details
+                            </button>
+                            <span class="project-client-tag"><i class='bx bx-buildings'></i> Rayvector Product</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Hotel Management -->
+                <div class="project-card" data-category="levicent angular" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-visual banner-hotel">
+                        <div class="pv-icon"><i class='bx bx-hotel'></i></div>
+                        <div class="pv-badge">Hospitality Suite</div>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span>Angular</span><span>Node.js</span><span>Express</span><span>MySQL</span>
+                        </div>
+                        <h3>Hotel Management System</h3>
+                        <p>Full-stack operations platform covering reservations, housekeeping, inventory, guest check-in/out, and role-based access.</p>
+                        <div class="project-links">
+                            <button class="btn-project-detail" onclick="openProjectModal('hotel')">
+                                <i class='bx bx-info-circle'></i> Details
+                            </button>
+                            <a href="https://github.com/tamizh-32" target="_blank" class="btn-github">
+                                <i class='bx bxl-github'></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Restaurant Management -->
+                <div class="project-card" data-category="levicent angular" data-aos="fade-up" data-aos-delay="350">
+                    <div class="project-visual banner-restaurant">
+                        <div class="pv-icon"><i class='bx bx-restaurant'></i></div>
+                        <div class="pv-badge">Point of Sale</div>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-tags">
+                            <span>Angular</span><span>Node.js</span><span>MongoDB</span>
+                        </div>
+                        <h3>Restaurant Management System</h3>
+                        <p>Live order management, table allocation, kitchen coordination, billing workflows, and dynamic floor dashboards.</p>
+                        <div class="project-links">
+                            <button class="btn-project-detail" onclick="openProjectModal('restaurant')">
+                                <i class='bx bx-info-circle'></i> Details
+                            </button>
+                            <a href="https://github.com/Tamizh-32/ResturantManagementSystem" target="_blank" class="btn-github">
+                                <i class='bx bxl-github'></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal (Fixed clean layout & non-overlapping Close button) -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close modal">
+                <i class='bx bx-x'></i>
+            </button>
+            <div class="modal-header">
+                <h2 id="modal-title"></h2>
+                <div id="modal-status-badge"></div>
+            </div>
+            <p id="modal-description"></p>
+            <div class="modal-meta">
+                <div class="modal-meta-item">
+                    <i class='bx bx-code-alt'></i>
+                    <div><strong>Tech Stack</strong><span id="modal-tech"></span></div>
+                </div>
+                <div class="modal-meta-item">
+                    <i class='bx bx-list-check'></i>
+                    <div><strong>Key Features</strong><span id="modal-features"></span></div>
+                </div>
+                <div class="modal-meta-item">
+                    <i class='bx bx-time'></i>
+                    <div><strong>Duration</strong><span id="modal-duration"></span></div>
+                </div>
+            </div>
+            <a id="modal-github" href="#" target="_blank" class="btn-github-modal">
+                <i class='bx bxl-github'></i> View on GitHub
+            </a>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         CONTACT
+    ============================================================ -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Contact <span class="gradient-text">Me</span></h2>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-col" data-aos="fade-right" data-aos-delay="100">
+                    <h3>Let's Work Together</h3>
+                    <p>I'm open to Software Engineer roles. Whether you have a project to build, a role to discuss, or just want to say hi — feel free to reach out anytime!</p>
+
+                    <div class="contact-cards">
+                        <a href="tel:+917904237706" class="contact-card-link">
+                            <div class="contact-card-item">
+                                <div class="cc-icon"><i class='bx bxs-phone'></i></div>
+                                <div><h4>Phone</h4><p>+91 7904237706</p></div>
+                            </div>
+                        </a>
+                        <a href="mailto:tamizharasan2000k@gmail.com" class="contact-card-link">
+                            <div class="contact-card-item">
+                                <div class="cc-icon"><i class='bx bxs-envelope'></i></div>
+                                <div><h4>Email</h4><p>tamizharasan2000k@gmail.com</p></div>
+                            </div>
+                        </a>
+                        <div class="contact-card-item">
+                            <div class="cc-icon"><i class='bx bxs-map'></i></div>
+                            <div><h4>Location</h4><p>Bengaluru, Karnataka, India</p></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-socials">
+                        <a href="https://github.com/tamizh-32" target="_blank" class="csocial-link"><i class='bx bxl-github'></i></a>
+                        <a href="https://www.linkedin.com/in/tamizharasan-kumar-profile" target="_blank" class="csocial-link"><i class='bx bxl-linkedin'></i></a>
+                        <a href="https://wa.me/7904237706" target="_blank" class="csocial-link"><i class='bx bxl-whatsapp'></i></a>
+                        <a href="https://www.instagram.com/tamizh_tom_32/" target="_blank" class="csocial-link"><i class='bx bxl-instagram'></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-col" data-aos="fade-left" data-aos-delay="200">
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div id="formStatus" class="form-status" style="display:none;"></div>
+                        <div class="form-group">
+                            <label for="contactName">Your Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="John Doe" autocomplete="name">
+                            <span class="form-error" id="nameError" style="display:none;">Please enter your name (at least 2 characters).</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail">Email Address</label>
+                            <input type="email" id="contactEmail" name="email" placeholder="john@example.com" autocomplete="email">
+                            <span class="form-error" id="emailError" style="display:none;">Please enter a valid email address.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" id="contactSubject" name="subject" placeholder="Project Inquiry / Opportunity">
+                            <span class="form-error" id="subjectError" style="display:none;">Please enter a subject (at least 3 characters).</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project, timeline, or opportunity..."></textarea>
+                            <span class="form-error" id="messageError" style="display:none;">Please enter a message (at least 10 characters).</span>
+                        </div>
+                        <button type="submit" id="contactSubmitBtn" class="btn-primary w-full">
+                            <i class='bx bx-send'></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="#home" class="footer-logo">Tamizh<span class="logo-dot">.</span></a>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="footer-copy">© 2025 Tamizharasan. All rights reserved.</p>
+        </div>
     </footer>
 
-    <div id="progress">
-        <span id="progress-value">
-            <i class='bx bxs-chevrons-up' ></i>
-        </span>
-    </div>
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+        <i class='bx bx-chevron-up'></i>
+    </button>
 
-    <!-- scroll reveal  -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <!-- Swiper JS -->
-     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <!-- mixitup cdn js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="script.js"></script>
 
-    
-    <!-- JavaScript for Modal -->
-<script>
-    const projectData = {
-        restaurant: {
-            title: "Restaurant Management System",
-            description: "A restaurant management system designed to streamline restaurant operations, improve efficiency, and enhance customer experience. It includes table management, real-time order tracking, multi-user support, and role-based authorization. The system also generates invoices and detailed reports for business insights.",
-            tech: "Node.js, Express.js, Handlebars, Bootstrap, MongoDB",
-            features: "Table Management, Real-Time Order Tracking, Multi-User Support, Role-Based Authorization, Invoice Generation, Business Reports",
-            start_date: "December 10, 2024",
-            end_date: "February 15, 2025",
-            duration: "3 Months",
-            github: "https://github.com/Tamizh-32/ResturantManagementSystem"
-            
-        },
-        ecommerce: {
-            title: "E-Commerce Website",
-            description: "A full-featured e-commerce platform designed for seamless online shopping. It includes order and product management, a shopping cart system, and role-based authorization for admin and user roles. The system ensures a secure and user-friendly shopping experience with real-time updates and efficient backend management.",
-            tech: "Node.js, Express.js, Handlebars, Bootstrap, MongoDB",
-            features: "Order Management, Product Management, Shopping Cart System, Secure Checkout, Role-Based Authorization, Real-Time Order Tracking",
-            start_date: "October 8, 2024",
-            end_date: "January 15, 2025",
-            duration: "3 Months",
-            github: "https://github.com/yourusername/ecommerce-website"
-            
-        },
-        hotel: {
-            title: "Hotel Management System",
-            description: "A comprehensive hotel management system designed to automate booking, check-ins, and check-outs while ensuring real-time room status updates. The system streamlines hotel operations with automated billing, customer management, and reporting, providing an efficient and user-friendly experience for both staff and guests.",
-            tech: "Angular, TypeScript, MySQL, .NET",
-            features: "Room Booking, Customer Check-In/Check-Out, Real-Time Room Status, Automated Billing, Customer Management, Reporting & Analytics",
-            start_date: "December 2024",
-            end_date: "Ongoing",
-            duration: "1 Year",
-            github: "https://github.com/yourusername/hotel-management"
-            
-        },
-        hrms: {
-            title: "Human Resource Management System",
-            description: "A complete HRMS solution designed to streamline employee management, payroll automation, leave tracking, and performance evaluation. The system enhances HR operations with real-time employee tracking, role-based access control, and detailed reporting for efficient workforce management.",
-            tech: "Angular, TypeScript, MySQL, .NET",
-            features: "Employee Tracking, Payroll Automation, Leave Management, Performance Evaluation, Role-Based Access Control, Reporting & Analytics",
-            start_date: "May 2024",
-            end_date: "Ongoing",
-            duration: "1 Year",
-            github: "https://github.com/yourusername/hrms"
-            
-        }
-    };
-    
-    function openModal(project) {
-        document.getElementById("modal-title").innerText = projectData[project].title;
-        document.getElementById("modal-description").innerText = projectData[project].description;
-        document.getElementById("modal-tech").innerText = projectData[project].tech;
-        document.getElementById("modal-features").innerText = projectData[project].features;
-        document.getElementById("modal-duration").innerText = projectData[project].duration;
-        document.getElementById("modal-github").href = projectData[project].github;
-        document.getElementById("modal").style.display = "flex"; // Show the modal
-    }
-    
-    function closeModal() {
-        document.getElementById("modal").style.display = "none"; // Hide the modal
-    }
-    
-    // Close the modal when clicking outside of it
-    window.onclick = function(event) {
-        const modal = document.getElementById("modal");
-        if (event.target === modal) {
-            closeModal();
-        }
-    };
-</script>
+    <script>
+        const projectData = {
+            migration: {
+                title: "Enterprise Application Migration & Authentication Upgrade",
+                status: "completed",
+                description: "Migrated two large enterprise applications from Angular 12 to 22 and Node.js 16 to 24, resolving complex dependency conflicts, TypeScript strictness, and breaking API changes across long-running codebases. Upgraded authentication from legacy MSAL v1 to MSAL v3 for secure modern token acquisition, silent renewal, and robust session management — achieving zero production downtime.",
+                tech: "Angular 22, Node.js 24, TypeScript, MSAL v3, RxJS, REST APIs",
+                features: "Zero-downtime migration, Angular 12→22 upgrade, Node.js 16→24 upgrade, MSAL v1→v3 token handling, Session resiliency, Code debt reduction",
+                duration: "Completed (Rayvector / Lam Research)",
+                github: "https://github.com/tamizh-32"
+            },
+            semiconductor: {
+                title: "Semiconductor Analytics Suite (Wafer, Defect & Health Analysis)",
+                status: "completed",
+                description: "Built four Angular applications on a unified architecture with interactive visualisations of wafer defects, offset analysis, and equipment health metrics for Lam Research. Consumed high-performance C++ Crow REST APIs serving Parquet dataset queries in PostgreSQL. Empowered manufacturing engineers to detect wafer flaws faster and enhance fab quality control.",
+                tech: "Angular, TypeScript, C++ Crow REST APIs, PostgreSQL, Parquet Files, Data Visualisation",
+                features: "Interactive wafer defect heatmaps, Wafer offset tracking, Real-time equipment health dashboards, PostgreSQL/Parquet query acceleration, Shared component architecture",
+                duration: "Completed (Rayvector / Lam Research)",
+                github: "https://github.com/tamizh-32"
+            },
+            aiplatform: {
+                title: "AI Project Health & Status Platform",
+                status: "completed",
+                description: "Engineered the complete frontend for an AI platform consolidating project data from Gitea, Zoho Projects, Raylumina, and Microsoft Teams into a single executive interface. Features real-time AI-generated project risk scores, delivery blocker summaries, and an embedded natural language Q&A assistant for stakeholders.",
+                tech: "Vite, React, Tailwind CSS, Recharts, REST APIs, JavaScript",
+                features: "Unified multi-platform telemetry (Gitea, Zoho, Teams), AI-generated risk & health reports, Interactive Recharts visualisations, Natural language project Q&A chat",
+                duration: "Completed (Rayvector Product)",
+                github: "https://github.com/tamizh-32"
+            },
+            itmonitor: {
+                title: "IT Management & Monitoring Platform",
+                status: "completed",
+                description: "Built the responsive management console and Docker containerisation for an agent-based hardware monitoring platform. Streams real-time CPU, memory, storage, and temperature metrics from employee machines and gives IT administrators tools for bandwidth capping, website blocking, and application compliance.",
+                tech: "Vite, React, Docker, Python REST APIs, Tailwind CSS",
+                features: "Live agent telemetry (CPU/RAM/Disk/Temp), Admin bandwidth throttle controls, Content & website filtering, Application restriction enforcement, Containerised Docker deployment",
+                duration: "Completed (Rayvector Product)",
+                github: "https://github.com/tamizh-32"
+            },
+            hotel: {
+                title: "Hotel Management System",
+                status: "completed",
+                description: "Developed a comprehensive full-stack hotel management platform managing daily hospitality workflows — booking reservations, housekeeping room-turnover tracking, inventory reordering, and guest billing. Configured strict role-based authorization so front desk, housekeeping, and management staff access only relevant operational modules.",
+                tech: "Angular, Node.js, Express.js, MySQL, Bootstrap, REST APIs",
+                features: "Online reservation & room availability grid, Check-in / check-out workflows with dynamic validation, Housekeeping task management, Transactional inventory stock tracking, Role-based access control",
+                duration: "May 2023 – Sep 2025 · Levicent Software Technologies",
+                github: "https://github.com/tamizh-32"
+            },
+            restaurant: {
+                title: "Restaurant Management System",
+                status: "completed",
+                description: "Engineered an end-to-end restaurant POS and coordination suite for floor staff, kitchen captains, and billing desks. Features visual table mapping, dynamic order punching, real-time ticket statuses sent directly to kitchen displays, and comprehensive daily revenue reports.",
+                tech: "Angular, Node.js, Express.js, MongoDB, Mongoose, Bootstrap",
+                features: "Interactive table layout & order entry, Live kitchen order status display, Menu & category pricing management, Automated receipt and tax invoice generation, MongoDB reporting aggregations",
+                duration: "May 2023 – 2024 · Levicent Software Technologies",
+                github: "https://github.com/Tamizh-32/ResturantManagementSystem"
+            }
+        };
 
+        function openProjectModal(key) {
+            const p = projectData[key];
+            if (!p) return;
+            document.getElementById('modal-title').innerText = p.title;
+            document.getElementById('modal-description').innerText = p.description;
+            document.getElementById('modal-tech').innerText = p.tech;
+            document.getElementById('modal-features').innerText = p.features;
+            document.getElementById('modal-duration').innerText = p.duration;
+            document.getElementById('modal-github').href = p.github;
+            document.getElementById('modal-status-badge').innerHTML =
+                `<span class="project-status completed">Completed</span>`;
+            document.getElementById('projectModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalCloseBtn').addEventListener('click', function (e) {
+            e.stopPropagation();
+            closeProjectModal();
+        });
+
+        document.getElementById('projectModal').addEventListener('click', function (e) {
+            if (e.target === this) closeProjectModal();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeProjectModal();
+        });
+
+        // Theme Switcher (Dark Default, Light Toggle)
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.body.classList.add('light-theme');
+                document.documentElement.classList.add('light-theme');
+                if (themeIcon) themeIcon.className = 'bx bx-moon';
+                if (themeToggle) {
+                    themeToggle.setAttribute('title', 'Switch to Dark Mode');
+                    themeToggle.setAttribute('aria-label', 'Switch to Dark Mode');
+                }
+            } else {
+                document.body.classList.remove('light-theme');
+                document.documentElement.classList.remove('light-theme');
+                if (themeIcon) themeIcon.className = 'bx bx-sun';
+                if (themeToggle) {
+                    themeToggle.setAttribute('title', 'Switch to Light Mode');
+                    themeToggle.setAttribute('aria-label', 'Switch to Light Mode');
+                }
+            }
+        }
+
+        const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+        setTheme(savedTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isLight = document.body.classList.contains('light-theme');
+                const nextTheme = isLight ? 'dark' : 'light';
+                localStorage.setItem('portfolio-theme', nextTheme);
+                setTheme(nextTheme);
+            });
+        }
+
+        // Contact Form Interactive Validation & Submission
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('contactName');
+        const emailInput = document.getElementById('contactEmail');
+        const subjectInput = document.getElementById('contactSubject');
+        const messageInput = document.getElementById('contactMessage');
+        const formStatus = document.getElementById('formStatus');
+        const submitBtn = document.getElementById('contactSubmitBtn');
+
+        let formSubmitted = false;
+
+        function setFieldError(input, errorId, show, customMsg) {
+            const errEl = document.getElementById(errorId);
+            if (!errEl) return;
+            if (show) {
+                input.classList.add('invalid');
+                errEl.classList.add('active');
+                errEl.style.display = 'flex';
+                if (customMsg) errEl.innerText = customMsg;
+            } else {
+                input.classList.remove('invalid');
+                errEl.classList.remove('active');
+                errEl.style.display = 'none';
+            }
+        }
+
+        function validateName(showIfEmpty = false) {
+            const val = nameInput.value.trim();
+            if (val.length === 0) {
+                if (showIfEmpty) {
+                    setFieldError(nameInput, 'nameError', true, 'Please enter your name.');
+                    return false;
+                } else {
+                    setFieldError(nameInput, 'nameError', false);
+                    return true;
+                }
+            }
+            if (val.length < 2) {
+                setFieldError(nameInput, 'nameError', true, 'Name must be at least 2 characters.');
+                return false;
+            }
+            setFieldError(nameInput, 'nameError', false);
+            return true;
+        }
+
+        function validateEmail(showIfEmpty = false) {
+            const val = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (val.length === 0) {
+                if (showIfEmpty) {
+                    setFieldError(emailInput, 'emailError', true, 'Please enter your email address.');
+                    return false;
+                } else {
+                    setFieldError(emailInput, 'emailError', false);
+                    return true;
+                }
+            }
+            if (!emailRegex.test(val)) {
+                setFieldError(emailInput, 'emailError', true, 'Please enter a valid email address.');
+                return false;
+            }
+            setFieldError(emailInput, 'emailError', false);
+            return true;
+        }
+
+        function validateSubject(showIfEmpty = false) {
+            const val = subjectInput.value.trim();
+            if (val.length === 0) {
+                if (showIfEmpty) {
+                    setFieldError(subjectInput, 'subjectError', true, 'Please enter a subject.');
+                    return false;
+                } else {
+                    setFieldError(subjectInput, 'subjectError', false);
+                    return true;
+                }
+            }
+            if (val.length < 3) {
+                setFieldError(subjectInput, 'subjectError', true, 'Subject must be at least 3 characters.');
+                return false;
+            }
+            setFieldError(subjectInput, 'subjectError', false);
+            return true;
+        }
+
+        function validateMessage(showIfEmpty = false) {
+            const val = messageInput.value.trim();
+            if (val.length === 0) {
+                if (showIfEmpty) {
+                    setFieldError(messageInput, 'messageError', true, 'Please enter your message.');
+                    return false;
+                } else {
+                    setFieldError(messageInput, 'messageError', false);
+                    return true;
+                }
+            }
+            if (val.length < 10) {
+                setFieldError(messageInput, 'messageError', true, `Message must be at least 10 characters (${val.length}/10).`);
+                return false;
+            }
+            setFieldError(messageInput, 'messageError', false);
+            return true;
+        }
+
+        // Live validation while typing (or after submitted once)
+        nameInput.addEventListener('input', () => validateName(formSubmitted));
+        emailInput.addEventListener('input', () => validateEmail(formSubmitted));
+        subjectInput.addEventListener('input', () => validateSubject(formSubmitted));
+        messageInput.addEventListener('input', () => validateMessage(formSubmitted));
+
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            formSubmitted = true;
+            formStatus.className = 'form-status';
+            formStatus.style.display = 'none';
+
+            const isNameValid = validateName(true);
+            const isEmailValid = validateEmail(true);
+            const isSubjectValid = validateSubject(true);
+            const isMessageValid = validateMessage(true);
+
+            if (!isNameValid || !isEmailValid || !isSubjectValid || !isMessageValid) {
+                if (!isNameValid) nameInput.focus();
+                else if (!isEmailValid) emailInput.focus();
+                else if (!isSubjectValid) subjectInput.focus();
+                else if (!isMessageValid) messageInput.focus();
+                return;
+            }
+
+            // Valid - trigger email client & show success feedback
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> Opening Email Client...";
+
+            const nameVal = nameInput.value.trim();
+            const emailVal = emailInput.value.trim();
+            const subjectVal = subjectInput.value.trim();
+            const messageVal = messageInput.value.trim();
+
+            const encodedSubject = encodeURIComponent(`[Portfolio] ${subjectVal}`);
+            const encodedBody = encodeURIComponent(
+                `Hi Tamizharasan,\n\nName: ${nameVal}\nEmail: ${emailVal}\n\nMessage:\n${messageVal}\n\n---\nSent from Portfolio Website`
+            );
+            const mailtoUrl = `mailto:tamizharasan2000k@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
+
+            setTimeout(() => {
+                window.location.href = mailtoUrl;
+
+                formStatus.className = 'form-status success';
+                formStatus.style.display = 'flex';
+                formStatus.innerHTML = `<i class='bx bx-check-circle' style='font-size:1.4rem'></i> <div><strong>Thank you, ${nameVal}!</strong><br>Your email client is opening to send your message to <strong>tamizharasan2000k@gmail.com</strong>.</div>`;
+
+                submitBtn.innerHTML = "<i class='bx bx-check'></i> Message Prepared!";
+                submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                contactForm.reset();
+                formSubmitted = false;
+
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = "<i class='bx bx-send'></i> Send Message";
+                    submitBtn.style.background = '';
+                }, 4000);
+            }, 500);
+        });
+    </script>
 
 </body>
 </html>

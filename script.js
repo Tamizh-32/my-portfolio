@@ -1,187 +1,227 @@
-// active hamburger menu 
-let menuIcon = document.querySelector(".menu-icon");
-let navlist = document.querySelector(".navlist")
-menuIcon.addEventListener("click",()=>{
-    menuIcon.classList.toggle("active");
-    navlist.classList.toggle("active");
-    document.body.classList.toggle("open");
+/* =====================================================
+   TAMIZHARASAN — PORTFOLIO 2025
+   Main JavaScript
+   ===================================================== */
+
+// ==================== LOADER ====================
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.classList.add('hidden');
+            setTimeout(() => loader.remove(), 600);
+        }
+    }, 1200);
 });
 
-// remove navlist
-navlist.addEventListener("click",()=>{
-    navlist.classList.remove("active");
-    menuIcon.classList.remove("active");
-    document.body.classList.remove("open");
-})
+// ==================== CUSTOM CURSOR ====================
+(function initCursor() {
+    const cursor = document.getElementById('cursor');
+    const follower = document.getElementById('cursorFollower');
+    if (!cursor || !follower) return;
 
+    let mouseX = 0, mouseY = 0;
+    let followerX = 0, followerY = 0;
 
-
-// rotate text js code 
-let text = document.querySelector(".text p");
-
-text.innerHTML = text.innerHTML.split("").map((char,i)=>
-    `<b style="transform:rotate(${i * 6.3}deg")>${char}</b>`
-).join("");
-
-
-// switch between about buttons 
-
-const buttons = document.querySelectorAll('.about-btn button');
-const contents = document.querySelectorAll('.content');
-
-buttons.forEach((button, index) => {
-  button.addEventListener('click', () => {
-    contents.forEach(content => content.style.display = 'none');
-    contents[index].style.display = 'block';
-    buttons.forEach(btn => btn.classList.remove('active'));
-    button.classList.add('active');
-  });
-});
-
-
-
-// portfolio fillter 
-
-var mixer = mixitup('.portfolio-gallery',{
-    selectors: {
-        target: '.portfolio-box'
-    },
-    animation: {
-        duration: 500
-    }
-});
-
-
-// Initialize swiperjs 
-
-var swiper = new Swiper(".mySwiper", {
-    slidesPerView: 1,
-    spaceBetween: 30,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-    autoplay:{
-        delay:3000,
-        disableOnInteraction:false,
-    },
-
-    breakpoints: {
-        576:{
-            slidesPerView:2,
-            spaceBetween:10,
-        },
-        1200:{
-            slidesPerView:3,
-            spaceBetween:20,
-        },
-    }
-  });
-
-
-
-//   skill Progress bar 
-
-const first_skill = document.querySelector(".skill:first-child");
-const sk_counters = document.querySelectorAll(".counter span");
-const progress_bars = document.querySelectorAll(".skills svg circle");
-
-window.addEventListener("scroll",()=>{
-    if(!skillsPlayed)
-    skillsCounter();
-})
-
-
-function hasReached(el){
-    let topPosition = el.getBoundingClientRect().top;
-    if(window.innerHeight >= topPosition + el.offsetHeight)return true;
-    return false;
-}
-
-function updateCount(num,maxNum){
-    let currentNum = +num.innerText;
-    
-    if(currentNum < maxNum){
-        num.innerText = currentNum + 1;
-        setTimeout(()=>{
-            updateCount(num,maxNum)
-        },12)
-    }
-}
-
-
-let skillsPlayed = false;
-
-function skillsCounter(){
-    if(!hasReached(first_skill))return;
-    skillsPlayed = true;
-    sk_counters.forEach((counter,i)=>{
-        let target = +counter.dataset.target;
-        let strokeValue = 465 - 465 * (target / 100);
-
-        progress_bars[i].style.setProperty("--target",strokeValue);
-
-        setTimeout(()=>{
-            updateCount(counter,target);
-        },400)
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
     });
 
-    progress_bars.forEach(p => p.style.animation = "progress 2s ease-in-out forwards");
-}
-
-
-// side progress bar 
-
-let calcScrollValue = ()=>{
-    let scrollProgress = document.getElementById("progress");
-    let pos = document.documentElement.scrollTop;
-
-    let calcHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrollValue = Math.round((pos * 100)/calcHeight);
-    
-    if(pos > 100){
-        scrollProgress.style.display = "grid";
-    }else{
-        scrollProgress.style.display = "none";
+    function animateFollower() {
+        followerX += (mouseX - followerX) * 0.12;
+        followerY += (mouseY - followerY) * 0.12;
+        follower.style.left = followerX + 'px';
+        follower.style.top = followerY + 'px';
+        requestAnimationFrame(animateFollower);
     }
+    animateFollower();
 
-    scrollProgress.addEventListener("click",()=>{
-        document.documentElement.scrollTop = 0;
+    document.querySelectorAll('a, button, .skill-card, .project-card, .tab-btn').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+            follower.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            follower.style.borderColor = 'rgba(129, 140, 248, 0.8)';
+        });
+        el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            follower.style.transform = 'translate(-50%, -50%) scale(1)';
+            follower.style.borderColor = 'rgba(129, 140, 248, 0.5)';
+        });
     });
+})();
 
-    scrollProgress.style.background = `conic-gradient(#fff ${scrollValue}%,#e6006d ${scrollValue}%)`;
-};
+// ==================== NAVBAR ====================
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const nav = document.querySelector('nav');
+const navLinks = document.querySelectorAll('.nav-link');
+const mobileOverlay = document.getElementById('mobileOverlay');
 
-window.onscroll = calcScrollValue;
-window.onload = calcScrollValue;
-
-
-// active menu 
-
-let menuLi = document.querySelectorAll("header ul li a");
-let section = document.querySelectorAll('section');
-
-function activeMenu(){
-    let len = section.length;
-    while(--len && window.scrollY + 97 < section[len].offsetTop){}
-    menuLi.forEach(sec => sec.classList.remove("active"));
-    menuLi[len].classList.add("active");
-}
-activeMenu();
-window.addEventListener("scroll",activeMenu);
-
-// scroll reveal
-
-ScrollReveal({ 
-    distance:"90px",
-    duration:2000,
-    delay:200,
-    // reset: true ,
+// Scroll effect
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    updateActiveNav();
+    updateScrollTop();
 });
 
+// Hamburger toggle
+if (hamburger && nav && mobileOverlay) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('mobile-open');
+        mobileOverlay.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('mobile-open') ? 'hidden' : '';
+    });
 
-ScrollReveal().reveal('.hero-info,.main-text,.proposal,.heading', { origin: "top" });
-ScrollReveal().reveal('.about-img,.fillter-buttons,.contact-info', { origin: "left" });
-ScrollReveal().reveal('.about-content,.skills', { origin: "right" });
-ScrollReveal().reveal('.allServices,.portfolio-gallery,.blog-box,footer,.img-hero', { origin: "bottom" });
+    mobileOverlay.addEventListener('click', closeMobileMenu);
 
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        nav.classList.remove('mobile-open');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            closeMobileMenu();
+        });
+    });
+
+    const mobileResume = document.querySelector('.btn-resume-mobile');
+    if (mobileResume) {
+        mobileResume.addEventListener('click', closeMobileMenu);
+    }
+}
+
+// Active nav on scroll
+function updateActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// ==================== SCROLL TO TOP ====================
+const scrollTopBtn = document.getElementById('scrollTop');
+
+function updateScrollTop() {
+    if (!scrollTopBtn) return;
+    if (window.scrollY > 400) {
+        scrollTopBtn.classList.add('visible');
+    } else {
+        scrollTopBtn.classList.remove('visible');
+    }
+}
+
+if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// ==================== ABOUT TABS ====================
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const targetTab = btn.dataset.tab;
+
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        btn.classList.add('active');
+        const targetEl = document.getElementById(targetTab);
+        if (targetEl) targetEl.classList.add('active');
+    });
+});
+
+// ==================== SKILLS FILTER ====================
+const skillCatBtns = document.querySelectorAll('.skill-cat-btn');
+const skillCards = document.querySelectorAll('.skill-card');
+
+skillCatBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        skillCatBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.cat;
+        skillCards.forEach(card => {
+            if (filter === 'all' || card.dataset.cat === filter) {
+                card.classList.remove('hidden');
+                card.style.animation = 'fadeInUp 0.4s ease both';
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    });
+});
+
+// ==================== PROJECTS FILTER ====================
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        projectCards.forEach(card => {
+            const category = card.dataset.category || '';
+            if (filter === 'all' || category.includes(filter)) {
+                card.classList.remove('hidden');
+                card.style.animation = 'fadeInUp 0.4s ease both';
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    });
+});
+
+// ==================== AOS INIT ====================
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 80,
+        });
+    }
+});
+
+// ==================== TILT EFFECT ====================
+document.querySelectorAll('.project-card, .skill-card, .edu-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / centerY * -3;
+        const rotateY = (x - centerX) / centerX * 3;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
