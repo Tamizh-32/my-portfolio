@@ -99,6 +99,11 @@ if (hamburger && nav && mobileOverlay) {
     if (mobileResume) {
         mobileResume.addEventListener('click', closeMobileMenu);
     }
+
+    const navCloseBtn = document.getElementById('navCloseBtn');
+    if (navCloseBtn) {
+        navCloseBtn.addEventListener('click', closeMobileMenu);
+    }
 }
 
 // Active nav on scroll
