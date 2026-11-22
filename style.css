@@ -1716,6 +1716,7 @@ header.scrolled {
     .hero-cta { justify-content: center; }
     .hero-socials { justify-content: center; }
     .hero-stats { justify-content: center; }
+    .stat-item { text-align: center; }
     .hero-badge { align-self: center; }
 
     .about-grid { grid-template-columns: 1fr; }
@@ -1811,6 +1812,8 @@ header.scrolled {
     }
 
     .section-header { margin-bottom: 36px; }
+
+    .scroll-indicator { display: none; }
 
     .hero-stats { gap: 16px; flex-wrap: wrap; }
     .stat-number { font-size: 1.5rem; }
@@ -1936,10 +1939,34 @@ header.scrolled {
 
     .hero-stats {
         flex-direction: column;
-        gap: 12px;
+        gap: 16px;
         align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
     }
-    .stat-divider { width: 40px; height: 1px; }
+    .stat-item {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .stat-number {
+        text-align: center;
+        font-size: 1.65rem;
+    }
+    .stat-label {
+        text-align: center;
+        margin-top: 2px;
+    }
+    .stat-divider {
+        width: 44px;
+        height: 1px;
+        background: var(--border-color);
+        margin: 2px auto;
+    }
 
     .about-tabs { flex-direction: column; }
     .tab-item { padding: 10px 12px; font-size: 0.88rem; }
