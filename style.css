@@ -365,7 +365,7 @@ header.scrolled {
     display: none;
     position: absolute;
     top: 16px;
-    right: 16px;
+    left: 16px;
     width: 38px;
     height: 38px;
     border-radius: 50%;
