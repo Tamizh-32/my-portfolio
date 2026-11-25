@@ -621,9 +621,7 @@
                             <button class="btn-project-detail" onclick="openProjectModal('hotel')">
                                 <i class='bx bx-info-circle'></i> Details
                             </button>
-                            <a href="https://github.com/tamizh-32" target="_blank" class="btn-github">
-                                <i class='bx bxl-github'></i> GitHub
-                            </a>
+                            <span class="project-client-tag"><i class='bx bx-buildings'></i> Levicent Software</span>
                         </div>
                     </div>
                 </div>
@@ -645,9 +643,7 @@
                             <button class="btn-project-detail" onclick="openProjectModal('restaurant')">
                                 <i class='bx bx-info-circle'></i> Details
                             </button>
-                            <a href="https://github.com/Tamizh-32/ResturantManagementSystem" target="_blank" class="btn-github">
-                                <i class='bx bxl-github'></i> GitHub
-                            </a>
+                            <span class="project-client-tag"><i class='bx bx-buildings'></i> Levicent Software</span>
                         </div>
                     </div>
                 </div>
@@ -681,9 +677,6 @@
                     <div><strong>Duration</strong><span id="modal-duration"></span></div>
                 </div>
             </div>
-            <a id="modal-github" href="#" target="_blank" class="btn-github-modal">
-                <i class='bx bxl-github'></i> View on GitHub
-            </a>
         </div>
     </div>
 
@@ -796,8 +789,7 @@
                 description: "Migrated two large enterprise applications from Angular 12 to 22 and Node.js 16 to 24, resolving complex dependency conflicts, TypeScript strictness, and breaking API changes across long-running codebases. Upgraded authentication from legacy MSAL v1 to MSAL v3 for secure modern token acquisition, silent renewal, and robust session management — achieving zero production downtime.",
                 tech: "Angular 22, Node.js 24, TypeScript, MSAL v3, RxJS, REST APIs",
                 features: "Zero-downtime migration, Angular 12→22 upgrade, Node.js 16→24 upgrade, MSAL v1→v3 token handling, Session resiliency, Code debt reduction",
-                duration: "Completed (Rayvector / Lam Research)",
-                github: "https://github.com/tamizh-32"
+                duration: "Completed (Rayvector / Lam Research)"
             },
             semiconductor: {
                 title: "Semiconductor Analytics Suite (Wafer, Defect & Health Analysis)",
@@ -805,8 +797,7 @@
                 description: "Built four Angular applications on a unified architecture with interactive visualisations of wafer defects, offset analysis, and equipment health metrics for Lam Research. Consumed high-performance C++ Crow REST APIs serving Parquet dataset queries in PostgreSQL. Empowered manufacturing engineers to detect wafer flaws faster and enhance fab quality control.",
                 tech: "Angular, TypeScript, C++ Crow REST APIs, PostgreSQL, Parquet Files, Data Visualisation",
                 features: "Interactive wafer defect heatmaps, Wafer offset tracking, Real-time equipment health dashboards, PostgreSQL/Parquet query acceleration, Shared component architecture",
-                duration: "Completed (Rayvector / Lam Research)",
-                github: "https://github.com/tamizh-32"
+                duration: "Completed (Rayvector / Lam Research)"
             },
             aiplatform: {
                 title: "AI Project Health & Status Platform",
@@ -814,8 +805,7 @@
                 description: "Engineered the complete frontend for an AI platform consolidating project data from Gitea, Zoho Projects, Raylumina, and Microsoft Teams into a single executive interface. Features real-time AI-generated project risk scores, delivery blocker summaries, and an embedded natural language Q&A assistant for stakeholders.",
                 tech: "Vite, React, Tailwind CSS, Recharts, REST APIs, JavaScript",
                 features: "Unified multi-platform telemetry (Gitea, Zoho, Teams), AI-generated risk & health reports, Interactive Recharts visualisations, Natural language project Q&A chat",
-                duration: "Completed (Rayvector Product)",
-                github: "https://github.com/tamizh-32"
+                duration: "Completed (Rayvector Product)"
             },
             itmonitor: {
                 title: "IT Management & Monitoring Platform",
@@ -823,8 +813,7 @@
                 description: "Built the responsive management console and Docker containerisation for an agent-based hardware monitoring platform. Streams real-time CPU, memory, storage, and temperature metrics from employee machines and gives IT administrators tools for bandwidth capping, website blocking, and application compliance.",
                 tech: "Vite, React, Docker, Python REST APIs, Tailwind CSS",
                 features: "Live agent telemetry (CPU/RAM/Disk/Temp), Admin bandwidth throttle controls, Content & website filtering, Application restriction enforcement, Containerised Docker deployment",
-                duration: "Completed (Rayvector Product)",
-                github: "https://github.com/tamizh-32"
+                duration: "Completed (Rayvector Product)"
             },
             hotel: {
                 title: "Hotel Management System",
@@ -832,8 +821,7 @@
                 description: "Developed a comprehensive full-stack hotel management platform managing daily hospitality workflows — booking reservations, housekeeping room-turnover tracking, inventory reordering, and guest billing. Configured strict role-based authorization so front desk, housekeeping, and management staff access only relevant operational modules.",
                 tech: "Angular, Node.js, Express.js, MySQL, Bootstrap, REST APIs",
                 features: "Online reservation & room availability grid, Check-in / check-out workflows with dynamic validation, Housekeeping task management, Transactional inventory stock tracking, Role-based access control",
-                duration: "May 2023 – Sep 2025 · Levicent Software Technologies",
-                github: "https://github.com/tamizh-32"
+                duration: "May 2023 – Sep 2025 · Levicent Software Technologies"
             },
             restaurant: {
                 title: "Restaurant Management System",
@@ -841,8 +829,7 @@
                 description: "Engineered an end-to-end restaurant POS and coordination suite for floor staff, kitchen captains, and billing desks. Features visual table mapping, dynamic order punching, real-time ticket statuses sent directly to kitchen displays, and comprehensive daily revenue reports.",
                 tech: "Angular, Node.js, Express.js, MongoDB, Mongoose, Bootstrap",
                 features: "Interactive table layout & order entry, Live kitchen order status display, Menu & category pricing management, Automated receipt and tax invoice generation, MongoDB reporting aggregations",
-                duration: "May 2023 – 2024 · Levicent Software Technologies",
-                github: "https://github.com/Tamizh-32/ResturantManagementSystem"
+                duration: "May 2023 – 2024 · Levicent Software Technologies"
             }
         };
 
@@ -854,7 +841,6 @@
             document.getElementById('modal-tech').innerText = p.tech;
             document.getElementById('modal-features').innerText = p.features;
             document.getElementById('modal-duration').innerText = p.duration;
-            document.getElementById('modal-github').href = p.github;
             document.getElementById('modal-status-badge').innerHTML =
                 `<span class="project-status completed">Completed</span>`;
             document.getElementById('projectModal').classList.add('active');
